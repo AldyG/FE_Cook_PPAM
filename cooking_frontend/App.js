@@ -49,7 +49,7 @@ export default function App() {
     <View
       style={styles.landing}
       onLayout={onLayoutRootView}>
-      <Text>YOUNG FLY ON THE TRACK! Niggers Niggers Niggers! 👋</Text>
+      <Text>Selamat datang di aplikasi Cook by The Book 👋</Text>
       <Entypo name="rocket" size={30} />
       <StatusBar style="auto" />
     </View>
