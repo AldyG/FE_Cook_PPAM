@@ -4,9 +4,91 @@ import Entypo from '@expo/vector-icons/Entypo';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { welcome, login, register, home, own, collection, profile, } from "./screen";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+interface tabOpt {
+  tabBarShowLabel: boolean;
+  headerShown: boolean;
+  tabBarStyle: {
+    position: 'absolute';
+    bottom: number;
+    left: number;
+    right: number;
+    elevation: number;
+    height: number;
+    background: string;
+  };
+}
+
+const tabOptions: tabOpt = {
+  tabBarShowLabel: false,
+  headerShown: false,
+  tabBarStyle: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    elevation: 0,
+    height: 63,
+    background: "#fff"
+  }
+}
+
+function LoggedIn() {
+  return (
+    <Tab.Navigator screenOptions={tabOptions}>
+      <Tab.Screen name="Home" component={home} options={{
+        tabBarIcon: ({focused, color, size})=>{
+          return (
+            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
+              <Entypo name="home" color={"#090838"} size={size} />
+              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
+            </View>
+          )
+        }
+      }} />
+      <Tab.Screen name="Own Recipes" component={own} options={{
+        tabBarIcon: ({focused, color, size})=>{
+          return (
+            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
+              <Entypo name="open-book" color={"#090838"} size={size} />
+              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
+            </View>
+          )
+        }
+      }} />
+      <Tab.Screen name="Collection" component={collection} options={{
+        tabBarIcon: ({focused, color, size})=>{
+          return(
+            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
+              <Entypo name="heart" color={"#090838"} size={size} />
+              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
+            </View>
+          )
+        }
+      }} />
+      <Tab.Screen name="Profile" component={profile} options={{
+        tabBarIcon: ({focused, color, size})=>{
+          return(
+            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
+              <Entypo name="user" color={"#090838"} size={size} />
+              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
+            </View>
+          )
+        }
+      }} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -46,10 +128,15 @@ export default function App() {
   }
 
   return (
-    <View
-      style={styles.landing}
-      onLayout={onLayoutRootView}>
-      <Text>Selamat datang di aplikasi Cook by The Book 👋</Text>
+    <View style={styles.landing} onLayout={onLayoutRootView}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Welcome" component={welcome} />
+          <Stack.Screen name="Login" component={login} />
+          <Stack.Screen name="Register" component={register} />
+          <Stack.Screen name="HomeApp" component={LoggedIn} />
+        </Stack.Navigator>
+      </NavigationContainer>
       <Entypo name="rocket" size={30} />
       <StatusBar style="auto" />
     </View>
