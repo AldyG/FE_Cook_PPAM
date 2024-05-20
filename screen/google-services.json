@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "773060416226",
+    "project_id": "ppam-gawk",
+    "storage_bucket": "ppam-gawk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773060416226:android:74e3f8086f874c8fb204bb",
+        "android_client_info": {
+          "package_name": "com.ppamgawk.cookbythebook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCNnvWTLYzTOdcrOq4V1xWXlXWFGVG46o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
