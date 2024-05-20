@@ -7,7 +7,13 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { welcome, login, register, home, own, collection, profile, } from "./screen";
+import welcome from "./screen/welcome";
+import login from "./screen/login";
+import register from "./screen/register";
+import home from "./screen/home";
+import own from "./screen/own-recipes";
+import collection from "./screen/collection";
+import profile from "./screen/profile";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
