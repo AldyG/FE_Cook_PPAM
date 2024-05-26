@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const profile: React.FC<prop> = () => {
+const prof: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Profile</Text>
@@ -13,4 +13,4 @@ const profile: React.FC<prop> = () => {
   );
 };
 
-export default profile;
+export default prof;

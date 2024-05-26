@@ -9,7 +9,7 @@ import { Stack } from 'expo-router/stack';
 import login from './login';
 import register from './register';
 import welcome from './welcome';
-import { home, own, collection, profile, } from "./(tabs)";
+import { home, own, collection, prof, } from "./(tabs)";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -46,7 +46,7 @@ function LoggedIn() {
   return (
     <Tabs screenOptions={tabOptions}>
       <Tabs.Screen name="Home" options={{
-        href: './screen/(main)/(tabs)/home',
+        href: './app/(tabs)/home',
         tabBarIcon: ({focused, color, size})=>{
           return (
             <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
@@ -57,7 +57,7 @@ function LoggedIn() {
         }
       }} />
       <Tabs.Screen name="Own Recipes" options={{
-        href: './screen/(main)/(tabs)/own-recipes',
+        href: './app/(tabs)/own-recipes',
         tabBarIcon: ({focused, color, size})=>{
           return (
             <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
@@ -68,7 +68,7 @@ function LoggedIn() {
         }
       }} />
       <Tabs.Screen name="Collection" options={{
-        href: './screen/(main)/(tabs)/collection',
+        href: './app/(tabs)/collection',
         tabBarIcon: ({focused, color, size})=>{
           return(
             <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
@@ -79,7 +79,7 @@ function LoggedIn() {
         }
       }} />
       <Tabs.Screen name="Profile" options={{
-        href: './screen/(main)/(tabs)/profile',
+        href: './app/(tabs)/profile',
         tabBarIcon: ({focused, color, size})=>{
           return(
             <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
