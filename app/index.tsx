@@ -28,6 +28,10 @@ interface tabOpt {
   };
 }
 
+interface log {
+
+}
+
 const tabOptions: tabOpt = {
   tabBarShowLabel: false,
   headerShown: false,
@@ -42,7 +46,7 @@ const tabOptions: tabOpt = {
   }
 }
 
-function LoggedIn() {
+const LoggedIn: React.FC<log> = () => {
   return (
     <Tabs screenOptions={tabOptions}>
       <Tabs.Screen name="Home" options={{
@@ -132,14 +136,7 @@ export default function App() {
 
   return (
     <View style={styles.landing} onLayout={onLayoutRootView}>
-      <Stack screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Welcome" options={{}} />
-        <Stack.Screen name="Login" options={{}} />
-        <Stack.Screen name="Register" options={{}} />
-        <Stack.Screen name="HomeApp" options={{}} />
-      </Stack>
-      <Entypo name="rocket" size={30} />
-      <StatusBar style="auto" />
+      welcome
     </View>
   );
 }
