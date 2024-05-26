@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const change: React.FC<prop> = () => {
+const Change: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Change Profile</Text>
@@ -13,4 +13,4 @@ const change: React.FC<prop> = () => {
   );
 };
 
-export default change;
+export default Change;

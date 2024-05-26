@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const add: React.FC<prop> = () => {
+const Add: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Add Recipes</Text>
@@ -13,4 +13,4 @@ const add: React.FC<prop> = () => {
   );
 };
 
-export default add;
+export default Add;

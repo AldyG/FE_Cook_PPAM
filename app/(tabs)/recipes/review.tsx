@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const rev: React.FC<prop> = () => {
+const Rev: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Your Recipes</Text>
@@ -13,4 +13,4 @@ const rev: React.FC<prop> = () => {
   );
 };
 
-export default rev;
+export default Rev;

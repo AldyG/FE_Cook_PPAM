@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const collection: React.FC<prop> = () => {
+const Collection: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Recipe Collection</Text>
@@ -13,4 +13,4 @@ const collection: React.FC<prop> = () => {
   );
 };
 
-export default collection;
+export default Collection;

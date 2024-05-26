@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const browse: React.FC<prop> = () => {
+const Browse: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Browse</Text>
@@ -13,4 +13,4 @@ const browse: React.FC<prop> = () => {
   );
 };
 
-export default browse;
+export default Browse;

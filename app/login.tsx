@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const login: React.FC<prop> = () => {
+const Login: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Login ngab</Text>
@@ -13,4 +13,4 @@ const login: React.FC<prop> = () => {
   );
 };
 
-export default login;
+export default Login;

@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const register: React.FC<prop> = () => {
+const Register: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Regis ngab</Text>
@@ -13,4 +13,4 @@ const register: React.FC<prop> = () => {
   );
 };
 
-export default register;
+export default Register;

@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const home: React.FC<prop> = () => {
+const Home: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Home</Text>
@@ -13,4 +13,4 @@ const home: React.FC<prop> = () => {
   );
 };
 
-export default home;
+export default Home;

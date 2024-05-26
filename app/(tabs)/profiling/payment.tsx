@@ -5,7 +5,7 @@ interface prop {
   // prop halaman
 }
 
-const pay: React.FC<prop> = () => {
+const Pay: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Credit Card Number or E-Wallet Please</Text>
@@ -13,4 +13,4 @@ const pay: React.FC<prop> = () => {
   );
 };
 
-export default pay;
+export default Pay;

@@ -6,10 +6,10 @@ import * as Font from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { Tabs } from 'expo-router';
 import { Stack } from 'expo-router/stack';
-import login from './login';
-import register from './register';
-import welcome from './welcome';
-import { home, own, collection, prof, } from "./(tabs)";
+import Login from './login';
+import Register from './register';
+import Welcome from './welcome';
+import { Home, Own, Collection, Prof, } from "./(tabs)";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -136,7 +136,7 @@ export default function App() {
 
   return (
     <View style={styles.landing} onLayout={onLayoutRootView}>
-      welcome
+      <Welcome />
     </View>
   );
 }
