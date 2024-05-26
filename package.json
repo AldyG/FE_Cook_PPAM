@@ -4,7 +4,7 @@
   "main": "expo-router/entry",
   "scheme": "cook-scheme",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --tunnel",
     "ts:check": "tsc",
     "android": "expo start --android",
     "ios": "expo start --ios",
