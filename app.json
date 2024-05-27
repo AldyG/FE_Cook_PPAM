@@ -30,7 +30,8 @@
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
       "@react-native-firebase/crashlytics",
-      "expo-router"
+      "expo-router",
+      "expo-font"
     ],
     "extra": {
       "router": {

@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
 	screenshot3: {
 		height: 299,
 		left: "25%",
+		// objectFit: "cover",
 		position: "absolute",
 		top: "13%",
 		width: 188,
@@ -152,68 +153,53 @@ const styles = StyleSheet.create({
 	},
 });
 
-const Welcome: React.FC<prop> = () => {
-	let [fontsLoaded] = useFonts({
+const Welcome2: React.FC<prop> = () => {
+    let [fontsLoaded] = useFonts({
 		DMSans_400Regular,
 		DMSans_700Bold,
 	});
-	
-	if (!fontsLoaded) {
-		return (
-			<ScrollView contentContainerStyle={styles.welcomePage}>
-				<View style={styles.welcomePage1}>
-					<View style={styles.overlap}>
-						<Image style={styles.group} source={require("../images/half_moon.png")} />
-						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
-						<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
-					</View>
-					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
+
+	return (
+		<ScrollView contentContainerStyle={styles.welcomePage}>
+			<View style={styles.welcomePage1}>
+				<View style={styles.overlap}>
+					<Image style={styles.group} source={require("../images/cloud.png")} />
+					<Image style={styles.screenshot2} source={require("../images/chef_probably_2.png")} />
+					<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
 				</View>
-			</ScrollView>
-		)
-	} else {
-		return (
-			<ScrollView contentContainerStyle={styles.welcomePage}>
-				<View style={styles.welcomePage1}>
-					<View style={styles.overlap}>
-						<Image style={styles.group} source={require("../images/half_moon.png")} />
-						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
-						<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
-					</View>
-					<View style={styles.frame}>
-						<View style={styles.ellipse} />
-						<View style={styles.ellipse2} />
-						<View style={styles.ellipse2} />
-					</View>
-					<View style={styles.flexContainer}>
-						<Text style={styles.text}>
-							<Text>
-								You can cook{"\n"}
-							</Text>
-						</Text>
-						<Text style={styles.text}>
-							<Text style={styles.textWrapper2}>
-								whatever dish{"\n"}
-							</Text>
-						</Text>
-						<Text style={styles.text}>
-							<Text style={styles.textWrapper2}>
-								you like
-							</Text>
-						</Text>
-					</View>
-					<Link style={styles.buttonPosition} href={"/welcome2"} asChild>
-						<Pressable>
-							<Text style={styles.buttonText}>
-								Next
-							</Text>
-						</Pressable>
-					</Link>
-					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
+				<View style={styles.frame}>
+					<View style={styles.ellipse} />
+					<View style={styles.ellipse2} />
+					<View style={styles.ellipse2} />
 				</View>
-			</ScrollView>
-		);
-	}
+				<View style={styles.flexContainer}>
+					<Text style={styles.text}>
+						<Text>
+							You can collect{"\n"}
+						</Text>
+					</Text>
+					<Text style={styles.text}>
+						<Text style={styles.textWrapper2}>
+							your favorite{"\n"}
+						</Text>
+					</Text>
+					<Text style={styles.text}>
+						<Text style={styles.textWrapper2}>
+							recipes
+						</Text>
+					</Text>
+				</View>
+				<Link style={styles.buttonPosition} href={"/welcome3"} asChild>
+                    <Pressable>
+                        <Text style={styles.buttonText}>
+                            Next
+                        </Text>
+                    </Pressable>
+				</Link>
+				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
+			</View>
+		</ScrollView>
+	);
 }
 
-export default Welcome;
+export default Welcome2;
