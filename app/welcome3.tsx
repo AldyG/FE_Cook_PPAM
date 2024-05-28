@@ -188,8 +188,7 @@ const Welcome3: React.FC<prop> = () => {
 						</Text>
 					</Text>
 				</View>
-				<Link style={styles.buttonPosition} href={"/welcome3"} asChild>
-                    {/* later change the href if register is done*/}
+				<Link style={styles.buttonPosition} href={"/login"} asChild>
                     <Pressable>
                         <Text style={styles.buttonText}>
                             Next
