@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "googleServicesFile": "./google-services.json",
+      "googleServicesFile": "./google-services/dev/google-services.json",
       "package": "com.ppamgawk.cookbythebook"
     },
     "web": {
