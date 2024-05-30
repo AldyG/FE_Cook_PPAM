@@ -8,7 +8,7 @@ interface prop {
 const Upgrade: React.FC<prop> = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Your Recipes</Text>
+      <Text>UPGRADE RAHHHHHHHHHHHHHHHHHHHHH</Text>
     </View>
   );
 };

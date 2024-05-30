@@ -28,22 +28,29 @@ const styles = StyleSheet.create({
 	},
 	boxrectangle: {
 		backgroundColor: "#87e4fd",
-		height: 119,
+		height: 89,
 		left: 0,
 		position: "absolute",
 		top: 0,
 		width: 430,
 	},
+  cbtb_logo: {
+    height: 100,
+    resizeMode: "contain",
+    right: 130,
+    position: "absolute",
+    top: 0,
+  },
   searchbox: {
     backgroundColor: "#ffffff",
     borderWidth: 0.5,
     borderColor: "#1a1a1a",
     borderRadius: 17,
     height: 40,
-    left: 40,
+    right: 25,
     position: "absolute",
-    top: 60,
-    width: 350
+    top: 30,
+    width: 250
   },
   boxgroup: {
     backgroundColor: "#ffffff",
@@ -54,7 +61,7 @@ const styles = StyleSheet.create({
     left: 45,
     objectFit: "cover",
     position: "absolute",
-    top: 190,
+    top: 160,
     width: 236
   },
   boxgrouppic: {
@@ -113,7 +120,7 @@ const styles = StyleSheet.create({
     left: 45,
     objectFit: "cover",
     position: "absolute",
-    top: 450,
+    top: 420,
     width: 236
   },
   boxgroup1pic: {
@@ -169,8 +176,9 @@ const styles = StyleSheet.create({
     color: "#909090",
     left: 45,
     position: "absolute",
-    top: 9,
-    width: 120
+    top: 6,
+    width: 195,
+    alignItems: "center",
   },
   trendingrecipes: {
     color: "#080738",
@@ -180,7 +188,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 24,
     position: "absolute",
-    top: 140,
+    top: 110,
   },
   newrecipes: {
     color: "#080738",
@@ -190,7 +198,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 24,
     position: "absolute",
-    top: 395,
+    top: 365,
   },
   recommendations: {
     color: "#080738",
@@ -200,14 +208,14 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 24,
     position: "absolute",
-    top: 655,
+    top: 625,
   },
   recrectangle: {
     backgroundColor: "#05ff00",
     borderWidth: 0,
     height: 116,
     left: 40,
-    top: 710,
+    top: 680,
     position: "absolute",
     borderRadius: 17,
     width: 350,
@@ -217,7 +225,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     height: 101,
     left: 49,
-    top: 718,
+    top: 688,
     position: "absolute",
     borderRadius: 17,
     width: 332,
@@ -227,7 +235,7 @@ const styles = StyleSheet.create({
     left: 55,
     objectFit: "cover",
     position: "absolute",
-    top: 724,
+    top: 694,
     width: 90,
     borderRadius: 17,
   },
@@ -239,7 +247,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 24,
     position: "absolute",
-    top: 755,
+    top: 725,
   },
   byirma: {
     fontFamily: "DMSans_400Regular",
@@ -247,7 +255,7 @@ const styles = StyleSheet.create({
     color: "#909090",
     left: 160,
     position: "absolute",
-    top: 780,
+    top: 750,
     width: 120
   },
   watchads: {
@@ -258,7 +266,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 24,
     position: "absolute",
-    top: 755,
+    top: 725,
     textDecorationLine: "underline",
   },
 	navbarbox: {
@@ -273,7 +281,7 @@ const styles = StyleSheet.create({
 		height: 22,
 		left: 15,
 		position: "absolute",
-		top: 8,
+		top: 9,
 		width: 20,
 	},
 	homeicon: {
@@ -317,49 +325,53 @@ const styles = StyleSheet.create({
 });
 
 const Home: React.FC<prop> = () => {
-	const [text, onEditedText] = React.useState("");
-	const [password, onEditedPassword] = React.useState("");
+	const [search, onSearchFill] = React.useState("");
 
 	return (
 		<ScrollView contentContainerStyle={styles.homebg}>
 			<View style={styles.home1}>
         <View style={styles.boxrectangle}>
+        <Image style={styles.cbtb_logo} source={require("../../images/cbtb_nobg.png")} alt="cbtb"/>
           <View style={styles.searchbox}>
-            <Image style={styles.searchicon} source={require("../../images/searchicon.png")}/>
-            <Text style={styles.searchrecipe}>Search recipes</Text>
+            <Image style={styles.searchicon} source={require("../../images/searchicon.png")} alt="icon"/>
+            <TextInput style={styles.searchrecipe} placeholder="Search recipes" onChangeText={onSearchFill} value={search}/>
           </View>
         </View>
+        <Text style={styles.trendingrecipes}>Trending Recipes</Text>
         <View style={styles.boxgroup}>
           <View style={styles.ratebox}>
-          <Text style={styles.ratingpizza}>4.5</Text>
+            <Text style={styles.ratingpizza}>4.5</Text>
           </View>
-          <Image style={styles.boxgrouppic} source={require("../../images/pizza.png")}/>
+          <Image style={styles.boxgrouppic} source={require("../../images/pizza.png")} alt="pizza"/>
           <Text style={styles.homemadepizza}>Homemade Pizza</Text>
           <Text style={styles.byuser123}>By User123</Text>
         </View>
+        <Text style={styles.newrecipes}>New recipes</Text>
         <View style={styles.boxgroup1}>
           <View style={styles.ratebox1}>
             <Text style={styles.ratingbruschetta}>4.5</Text>
           </View>
-          <Image style={styles.boxgroup1pic} source={require("../../images/bruschetta.png")}/>
+          <Image style={styles.boxgroup1pic} source={require("../../images/bruschetta.png")} alt="brusch"/>
           <Text style={styles.prosbrus}>Bruschetta</Text>
           <Text style={styles.byireniaoxford}>By Irenia Oxford</Text>
         </View>
-        <Text style={styles.trendingrecipes}>Trending Recipes</Text>
-        <Text style={styles.newrecipes}>New recipes</Text>
         <Text style={styles.recommendations}>Recommendations</Text>
         <View style={styles.recrectangle}></View>
           <View style={styles.recwhiterectangle}></View>
-            <Image style= {styles.rendangpic} source={require("../../images/rendang.png")}/>
+            <Image style= {styles.rendangpic} source={require("../../images/rendang.png")} alt="rend"/>
             <Text style={styles.rendangtext}>Rendang</Text>
             <Text style={styles.byirma}>By Irma</Text>
             <Text style={styles.watchads}>Watch Ad!</Text>
         <View style={styles.navbarbox}></View>
           <View style={styles.homebox}></View>
-				    <Image style= {styles.homeicon} source={require("../../images/home_1.png")}/>
-				  <Image style= {styles.postrecipeicon} source={require("../../images/book_open.png")}/>
-				  <Image style= {styles.collectionicon} source={require("../../images/heart_1.png")}/>
-				  <Image style= {styles.profileicon} source={require("../../images/user_1.png")}/>
+				    <Image style= {styles.homeicon} source={require("../../images/home_1.png")} alt="home"/>
+				  <Image style= {styles.postrecipeicon} source={require("../../images/book_open.png")} alt="post"/>
+				  <Image style= {styles.collectionicon} source={require("../../images/heart_1.png")} alt="saved"/>
+          <Link href={"/(tabs)/profile"} style= {styles.profileicon} asChild>
+            <Pressable>
+              <Image source={require("../../images/user_1.png")} alt="prof"/>
+            </Pressable>
+          </Link>
 			</View>
 		</ScrollView>
 	);
