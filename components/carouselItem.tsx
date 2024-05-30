@@ -1,14 +1,22 @@
-import React from "react";
-import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions } from "react-native";
-import { Link } from 'expo-router'
-import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
-import { Redirect } from 'expo-router';
+import React from 'react';
+import { ScrollView, View, Text, StyleSheet, Image, Pressable, useWindowDimensions, ImageSourcePropType } from "react-native";
+import { Link } from "expo-router";
+import Carousel from './carousel';
 
 interface prop {
-  // prop halaman
+    item: {
+        id: string;
+        text1: string;
+        text2: string;
+        text3: string;
+        imGroup: ImageSourcePropType;
+        imScreenshot: ImageSourcePropType;
+        imElements: ImageSourcePropType;
+        imBg: ImageSourcePropType;
+    };
 }
 
-const screenWidth = Dimensions.get("screen").width;
+const { width } = useWindowDimensions();
 
 const styles = StyleSheet.create({
 	welcomePage: {
@@ -63,7 +71,6 @@ const styles = StyleSheet.create({
 	screenshot3: {
 		height: 299,
 		left: "25%",
-		// objectFit: "cover",
 		position: "absolute",
 		top: "13%",
 		width: 188,
@@ -142,7 +149,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		position: "absolute",
 		width: 200,
-		left: screenWidth / 2 - 80
+		left: width / 2 - 80
 	},
 	buttonText: {
 		alignItems: "center",
@@ -154,48 +161,41 @@ const styles = StyleSheet.create({
 	},
 });
 
-const Welcome3: React.FC<prop> = () => {
-	return (
-		<ScrollView contentContainerStyle={styles.welcomePage}>
-			<View style={styles.welcomePage1}>
-				<View style={styles.overlap}>
-					<Image style={styles.group2} source={require("../images/three_half_circle.png")} />
-					<Image style={styles.screenshot3} source={require("../images/read_book.png")} />
-					<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
-				</View>
-				<View style={styles.frame}>
-					<View style={styles.ellipse} />
-					<View style={styles.ellipse2} />
-					<View style={styles.ellipse2} />
-				</View>
-				<View style={styles.flexContainer}>
-					<Text style={styles.text}>
-						<Text>
-							You can add your{"\n"}
+const CarouselItem: React.FC<prop> = ({ item }) => {
+		return (
+			<ScrollView contentContainerStyle={styles.welcomePage}>
+				<View style={styles.welcomePage1}>
+					<View style={styles.overlap}>
+						<Image style={styles.group} source={item.imGroup} />
+						<Image style={styles.screenshot} source={item.imScreenshot} />
+						<Image style={styles.elementsGeometric} source={item.imElements} />
+					</View>
+					<View style={styles.frame}>
+						<View style={styles.ellipse} />
+						<View style={styles.ellipse2} />
+						<View style={styles.ellipse2} />
+					</View>
+					<View style={styles.flexContainer}>
+						<Text style={styles.text}>
+							<Text>
+								{item.text1}
+							</Text>
 						</Text>
-					</Text>
-					<Text style={styles.text}>
-						<Text style={styles.textWrapper2}>
-							own recipe to{"\n"}
+						<Text style={styles.text}>
+							<Text style={styles.textWrapper2}>
+                                {item.text2}
+							</Text>
 						</Text>
-					</Text>
-					<Text style={styles.text}>
-						<Text style={styles.textWrapper2}>
-							share with others!
+						<Text style={styles.text}>
+							<Text style={styles.textWrapper2}>
+                                {item.text3}
+							</Text>
 						</Text>
-					</Text>
+					</View>
+					<Image style={styles.cookByTheBook} source={item.imBg} />
 				</View>
-				<Link style={styles.buttonPosition} href={"/login"} asChild>
-                    <Pressable>
-                        <Text style={styles.buttonText}>
-                            Next
-                        </Text>
-                    </Pressable>
-				</Link>
-				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
-			</View>
-		</ScrollView>
-	);
-}
+			</ScrollView>
+		);
+	}
 
-export default Welcome3;
+export default CarouselItem;
