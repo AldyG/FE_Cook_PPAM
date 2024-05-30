@@ -1,14 +1,16 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions } from "react-native";
 import { Link } from 'expo-router'
+import { TextInput, HelperText } from 'react-native-paper'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
-import { Redirect } from 'expo-router';
+import { Redirect, router } from 'expo-router';
+import { useAuth } from '../utils/auth';
 
 interface prop {
 	// prop halaman
 }
 
-const screenWidth = Dimensions.get("screen").width;
+// const screenWidth = Dimensions.get("screen").width;
 
 const styles = StyleSheet.create({
 	welcomePage: {
@@ -132,6 +134,64 @@ const Register: React.FC<prop> = () => {
 	const [email, onEditedText] = React.useState("");
 	const [password, onEditedPassword] = React.useState("");
 
+	const [errors,setErrors] = React.useState({
+		firstName:"",
+        email:"",
+        password:""
+    })
+    const { signUp } = useAuth();
+
+    const validate = ()=>{
+
+        let newErrors = {
+            firstName:"",
+			email:"",
+            password:""
+        };
+		if(!firstName){
+            newErrors.firstName = "*first name is required.";
+        }
+        if(!email){
+            newErrors.email = "*email is required.";
+        }
+        if(!password){
+            newErrors.password = "*password is required.";
+        }
+		if(password.length < 8){
+			newErrors.password = "*password must be 8 characters or more!"
+		}
+
+        return newErrors;
+
+    }
+
+	const handleSignUp = ()=>{
+        const findErrors = validate();
+
+        if(Object.values(findErrors).some(value => value !== "")){
+            // console.log(findErrors)
+            setErrors(findErrors)
+        }else{
+            signUp(email, password).then(res => {
+                // console.log("login success",res)
+                router.replace("/login");
+            }).catch((error)=>{
+           
+                let newErrors = {
+					firstName:"",
+                    email: "",
+                    password:""
+                }
+                if(error.code === "auth/invalid-credential"){
+                    newErrors.email = "Email or password invalid.";
+                }else{
+                    newErrors.email = "Something went wrong.";
+                }
+                setErrors(newErrors)
+            })
+        }
+    }
+
 	return (
 		<ScrollView contentContainerStyle={styles.welcomePage}>
 			<View style={styles.welcomePage1}>
@@ -142,17 +202,23 @@ const Register: React.FC<prop> = () => {
 					value={firstName} placeholder="Type in your first name"/>
 					<TextInput style={styles.last_name_box} onChangeText={onEditedLastName}
 					value={lastName} placeholder="Type in your last name"/>
-					<TextInput style={styles.email_box} onChangeText={onEditedText}
+					<TextInput style={styles.email_box} onChangeText={(email) => {
+						onEditedText(email)
+						setErrors(errors => ({...errors, email: ""}))
+					}}
+					error={errors.email !== ""}
 					value={email} placeholder="Enter your registered email"/>
-					<TextInput style={styles.password_box} onChangeText={onEditedPassword}
-					secureTextEntry={true} placeholder="Enter your password"/>
-					<Link style={styles.login} href={"/login"} asChild>
-						<Pressable>
-							<Text style={styles.login_text}>
-								REGISTER
-							</Text>
-						</Pressable>
-					</Link>
+					<TextInput style={styles.password_box} onChangeText={(password) => {
+						onEditedPassword(password)
+						setErrors(errors => ({...errors, password: ""}))
+					}}
+					error={errors.password !== ""}
+					value={password} secureTextEntry={true} placeholder="Enter your password"/>
+					<Pressable style={styles.login} onPress={handleSignUp}>
+						<Text style={styles.login_text}>
+							REGISTER
+						</Text>
+					</Pressable>
 				</View>
 			</View>
 		</ScrollView>

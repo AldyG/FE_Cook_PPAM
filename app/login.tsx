@@ -1,8 +1,10 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions } from "react-native";
+import { TextInput, HelperText } from 'react-native-paper'
 import { Link } from 'expo-router'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
-import { Redirect } from 'expo-router';
+import { Redirect, router } from 'expo-router';
+import { useAuth } from '../utils/auth';
 
 interface prop {
   // prop halaman
@@ -140,8 +142,54 @@ const styles = StyleSheet.create({
 });
 
 const Login: React.FC<prop> = () => {
-	const [text, onEditedText] = React.useState("");
+	const [email, onEditedText] = React.useState("");
 	const [password, onEditedPassword] = React.useState("");
+
+	const [errors,setErrors] = React.useState({
+        email:"",
+        password:""
+    })
+
+	const { signIn } = useAuth();
+	
+	const validate = ()=>{
+        let newErrors = {
+            email:"",
+            password:""
+        };
+        if(!email){
+            newErrors.email = "*email is required.";
+        }
+        if(!password){
+            newErrors.password = "*password is required.";
+        }
+        return newErrors;
+    }
+
+    const handleSignIn = () => {
+        const findErrors = validate();
+
+        if(Object.values(findErrors).some(value => value !== "")){
+            // console.log(findErrors)
+            setErrors(findErrors)
+        } else {
+            signIn(email, password).then(res => {
+                // console.log("Login success: ", res)
+                router.replace("/(tabs)/home");
+            }).catch((error)=>{
+                let newErrors = {
+                    email: "",
+                    password:""
+                }
+                if(error.code === "auth/invalid-credential"){
+                    newErrors.email = "Email or password invalid.";
+                }else{
+                    newErrors.email = "Something went wrong.";
+                }
+                setErrors(newErrors)
+            })
+        }
+    }
 
 	return (
 		<ScrollView contentContainerStyle={styles.welcomePage}>
@@ -152,17 +200,25 @@ const Login: React.FC<prop> = () => {
 				<View style={styles.rectangle_bg}>
 					<Text style={styles.welcome_text}>Welcome!</Text>
 					<Text style={styles.have_account_text}>Do you have an account? Go right ahead and login!</Text>
-					<TextInput style={styles.email_box} onChangeText={onEditedText}
-					value={text} placeholder="Enter your email"/>
-					<TextInput style={styles.password_box} onChangeText={onEditedPassword}
-					secureTextEntry={true} placeholder="Enter your password"/>
-					<Link style={styles.login} href={"/(tabs)/home"} asChild>
-						<Pressable>
-							<Text style={styles.login_text}>
-								LOGIN
-							</Text>
-						</Pressable>
-					</Link>
+					<TextInput style={styles.email_box} onChangeText={(email) => {
+						onEditedText(email)
+						setErrors(errors => ({...errors, email: ""}))
+					}}
+					error={errors.email !== ""}
+					value={email} placeholder="Enter your email"/>
+					<HelperText type="error" visible={errors.email !== ""}>{errors.email}</HelperText>
+					<TextInput style={styles.password_box} onChangeText={(password) => {
+						onEditedPassword(password)
+						setErrors(errors => ({...errors, password: ""}))
+					}}
+					error={errors.password !== ""}
+					value={password} secureTextEntry={true} placeholder="Enter your password"/>
+					<HelperText type="error" visible={errors.password !== ""}>{errors.password}</HelperText>
+					<Pressable style={styles.login} onPress={handleSignIn}>
+						<Text style={styles.login_text}>
+							LOGIN
+						</Text>
+					</Pressable>
 					<Text style={styles.dont_have_acc}>Don't have an account?{" "}
 						<Link style={styles.reg_now} href={"/register"} asChild>
 							<Text style={styles.reg_now}>Register now!</Text>

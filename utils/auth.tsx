@@ -13,17 +13,6 @@ interface AuthVal {
   signUp: (email: string, password: string) => Promise<void>;
 }
 
-async function getUser(e, pass) {
-  const user = db.user
-  .where(firestore.Filter.and(
-    firestore.Filter('email', '==', e), 
-    firestore.Filter('password', '==', crypt.digest(crypt.CryptoDigestAlgorithm.MD5, pass))
-  ))
-  .get();
-
-  return user;
-}
-
 const AuthContext = React.createContext<AuthVal>({
   isLoggedIn: false,
   user: null,
@@ -39,13 +28,13 @@ export const useAuth = (): AuthVal => {
 export default function Auth({ children }: { children: React.ReactNode }): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState<typeof firestore | null>(null); // Explicitly type user
+  const [user, setUser] = useState<typeof firestore | null>(null); 
 
   // Handle user state changes
-  function onStateChange(user: typeof firestore | null) { // Consistent user type
-    console.log("onStateChange", user);
+  function onStateChange(user: typeof firestore | null) { 
+    // console.log("onStateChange", user);
     setUser(user);
-    setIsLoggedIn(!!user); // Concise way to set isLoggedIn based on user existence
+    setIsLoggedIn(!!user); 
 
     if (initializing) setInitializing(false);
   }
@@ -63,8 +52,7 @@ export default function Auth({ children }: { children: React.ReactNode }): JSX.E
         setIsLoggedIn(!!user);
         setInitializing(false);
       } catch (error) {
-        console.error('Auth state change error:', error);
-        // Handle errors appropriately (e.g., display error message)
+        // console.error('Auth state change error:', error);
       }
     });
   
