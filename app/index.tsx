@@ -10,6 +10,7 @@ import Login from './login';
 import Register from './register';
 import Welcome from './welcome';
 import { Home, Own, Collection, Prof, } from "./(tabs)";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -135,9 +136,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.landing} onLayout={onLayoutRootView}>
+    <SafeAreaView style={styles.landing} onLayout={onLayoutRootView}>
       <Welcome />
-    </View>
+    </SafeAreaView>
   );
 }
 
