@@ -156,7 +156,7 @@ const Login: React.FC<prop> = () => {
 					value={text} placeholder="Enter your email"/>
 					<TextInput style={styles.password_box} onChangeText={onEditedPassword}
 					secureTextEntry={true} placeholder="Enter your password"/>
-					<Link style={styles.login} href={"/(tabs)/home"} asChild>
+					<Link style={styles.login} href={"/(tabs)/recipes/recipe"} asChild>
 						<Pressable>
 							<Text style={styles.login_text}>
 								LOGIN
