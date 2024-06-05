@@ -189,7 +189,7 @@ const Welcome2: React.FC<prop> = () => {
 						</Text>
 					</Text>
 				</View>
-				<Link style={styles.buttonPosition} href={"/welcome3"} asChild>
+				<Link style={styles.buttonPosition} href={"/welcome3"} push asChild>
                     <Pressable>
                         <Text style={styles.buttonText}>
                             Next

@@ -1,151 +1,242 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Entypo from '@expo/vector-icons/Entypo';
-import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
-import { StatusBar } from 'expo-status-bar';
-import { Tabs } from 'expo-router';
-import { Stack } from 'expo-router/stack';
-import Login from './login';
-import Register from './register';
-import Welcome from './welcome';
-import { Home, Own, Collection, Prof, } from "./(tabs)";
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useEffect } from "react";
+import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, Alert, BackHandler } from "react-native";
+import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
+import { Link } from "expo-router";
+import { db } from '../FirebaseConfig'
+import { collection, getDocs } from "firebase/firestore";
 
-// Keep the splash screen visible while we fetch resources
-SplashScreen.preventAutoHideAsync();
-
-interface tabOpt {
-  tabBarShowLabel: boolean;
-  headerShown: boolean;
-  tabBarStyle: {
-    position: 'absolute';
-    bottom: number;
-    left: number;
-    right: number;
-    elevation: number;
-    height: number;
-    background: string;
-  };
+interface prop {
+  // prop halaman
 }
 
-interface log {
-
-}
-
-const tabOptions: tabOpt = {
-  tabBarShowLabel: false,
-  headerShown: false,
-  tabBarStyle: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    elevation: 0,
-    height: 63,
-    background: "#fff"
-  }
-}
-
-const LoggedIn: React.FC<log> = () => {
-  return (
-    <Tabs screenOptions={tabOptions}>
-      <Tabs.Screen name="Home" options={{
-        href: './app/(tabs)/home',
-        tabBarIcon: ({focused, color, size})=>{
-          return (
-            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
-              <Entypo name="home" color={"#090838"} size={size} />
-              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
-            </View>
-          )
-        }
-      }} />
-      <Tabs.Screen name="Own Recipes" options={{
-        href: './app/(tabs)/own-recipes',
-        tabBarIcon: ({focused, color, size})=>{
-          return (
-            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
-              <Entypo name="open-book" color={"#090838"} size={size} />
-              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
-            </View>
-          )
-        }
-      }} />
-      <Tabs.Screen name="Collection" options={{
-        href: './app/(tabs)/collection',
-        tabBarIcon: ({focused, color, size})=>{
-          return(
-            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
-              <Entypo name="heart" color={"#090838"} size={size} />
-              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
-            </View>
-          )
-        }
-      }} />
-      <Tabs.Screen name="Profile" options={{
-        href: './app/(tabs)/profile',
-        tabBarIcon: ({focused, color, size})=>{
-          return(
-            <View style={{alignItems: "center", justifyContent: "center", backgroundColor: focused ? color : "#fff"}}>
-              <Entypo name="user" color={"#090838"} size={size} />
-              <Entypo name="dot-single" color={focused ? "#090838" : "#fff"} size={4}/>
-            </View>
-          )
-        }
-      }} />
-    </Tabs>
-  );
-}
-
-export default function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Pre-load fonts, make any API calls you need to do here
-        await Font.loadAsync(Entypo.font);
-        // Artificially delay for two seconds to simulate a slow loading
-        // experience. Please remove this if you copy and paste the code!
-        await new Promise(resolve => setTimeout(resolve, 2000));
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        // Tell the application to render
-        setAppIsReady(true);
-      }
-    }
-
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
-      await SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
-
-  if (!appIsReady) {
-    return null;
-  }
-
-  return (
-    <SafeAreaView style={styles.landing} onLayout={onLayoutRootView}>
-      <Welcome />
-    </SafeAreaView>
-  );
-}
+const screenWidth = Dimensions.get("screen").width;
 
 const styles = StyleSheet.create({
-  landing: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	welcomePage: {
+		backgroundColor: "#87e4fd",
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "center",
+		width: "100%",
+	},
+	welcomePage1: {
+		backgroundColor: "var(--primary)",
+		height: 932,
+		position: "relative",
+		width: 430,
+	},
+	overlap: {
+		height: 331,
+		left: 0,
+		position: "absolute",
+		top: 225,
+		width: 430,
+	},
+	group: {
+		height: 239,
+		left: 0,
+		position: "absolute",
+		top: 92,
+		width: 430,
+	},
+	group2: {
+		height: 280,
+		left: 0,
+		position: "absolute",
+		top: "15%",
+		width: 430,
+	},
+	screenshot: {
+		height: 331,
+		left: 44,
+		objectFit: "cover",
+		position: "absolute",
+		top: 0,
+		width: 344,
+	},
+	screenshot2: {
+		height: 250,
+		left: "13%",
+		position: "absolute",
+		top: "25%",
+		width: 287,
+	},
+	screenshot3: {
+		height: 299,
+		left: "25%",
+		position: "absolute",
+		top: "13%",
+		width: 188,
+	},
+	elementsGeometric: {
+		height: 315,
+		left: 0,
+		position: "absolute",
+		top: 0,
+		width: 323,
+	},
+	frame: {
+		alignItems: "flex-start",
+		display: "flex",
+		flexDirection: "row",
+		gap: 6,
+		left: 66,
+		position: "absolute",
+		top: 643,
+	},
+	ellipse: {
+		backgroundColor: "var(--white)",
+		borderRadius: 3,
+		height: 6,
+		position: "relative",
+		width: 6,
+	},
+	ellipse2: {
+		backgroundColor: "var(--ingredients)",
+		borderRadius: 3,
+		height: 6,
+		position: "relative",
+		width: 6,
+	},
+	flexContainer: {
+		alignItems: "center",
+		display: "flex",
+		flexDirection: "column",
+		height: 134,
+		justifyContent: "center",
+		left: 66,
+		position: "absolute",
+		top: 640,
+		width: 329,
+	},
+	text: {
+		alignSelf: "stretch",
+		color: "var(--font)",
+		fontFamily: "DMSans_700Bold",
+		fontSize: 36,
+		lineHeight: 36,
+		position: "relative",
+	},
+	textWrapper2: {
+		color: "#080738",
+		fontFamily: "DMSans_400Regular",
+		fontSize: 36,
+		lineHeight: 36,
+	},
+	cookByTheBook: {
+		height: 184,
+		left: 109,
+		objectFit: "cover",
+		position: "absolute",
+		top: 52,
+		width: 213,
+	},
+	buttonPosition: {
+		alignItems: "center",
+		backgroundColor: "white",
+		borderRadius: 20,
+		display: "flex",
+		// gap: 4,
+		padding: 8,
+		top: 840,
+		justifyContent: "center",
+		position: "absolute",
+		width: 200,
+		left: screenWidth / 2 - 80
+	},
+	buttonText: {
+		alignItems: "center",
+		flex: 1,
+		color: "black",
+		fontFamily: "DMSans_700Bold",
+		fontSize: 16,
+		lineHeight: 20,
+	},
 });
+
+const Welcome: React.FC<prop> = () => {
+	let [fontsLoaded] = useFonts({
+		DMSans_400Regular,
+		DMSans_700Bold,
+	});
+	
+	useEffect(() => {
+		const backAction = () => {
+		  Alert.alert('Hold on!', 'Are you sure you want to exit app?', [
+			{
+			  text: 'Cancel',
+			  onPress: () => null,
+			  style: 'cancel',
+			},
+			{text: 'YES', onPress: () => BackHandler.exitApp()},
+		  ]);
+		  return true;
+		};
+	
+		const backHandler = BackHandler.addEventListener(
+		  'hardwareBackPress',
+		  backAction,
+		);
+	
+		return () => backHandler.remove();
+	  }, []);
+
+	if (!fontsLoaded) {
+		return (
+			<ScrollView contentContainerStyle={styles.welcomePage}>
+				<View style={styles.welcomePage1}>
+					<View style={styles.overlap}>
+						<Image style={styles.group} source={require("../images/half_moon.png")} />
+						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
+						<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
+					</View>
+					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
+				</View>
+			</ScrollView>
+		)
+	} else {
+		return (
+			<ScrollView contentContainerStyle={styles.welcomePage}>
+				<View style={styles.welcomePage1}>
+					<View style={styles.overlap}>
+						<Image style={styles.group} source={require("../images/half_moon.png")} />
+						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
+						<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
+					</View>
+					<View style={styles.frame}>
+						<View style={styles.ellipse} />
+						<View style={styles.ellipse2} />
+						<View style={styles.ellipse2} />
+					</View>
+					<View style={styles.flexContainer}>
+						<Text style={styles.text}>
+							<Text>
+								You can cook{"\n"}
+							</Text>
+						</Text>
+						<Text style={styles.text}>
+							<Text style={styles.textWrapper2}>
+								whatever dish{"\n"}
+							</Text>
+						</Text>
+						<Text style={styles.text}>
+							<Text style={styles.textWrapper2}>
+								you like
+							</Text>
+						</Text>
+					</View>
+					<Link style={styles.buttonPosition} href={"/welcome2"} push asChild>
+						<Pressable>
+							<Text style={styles.buttonText}>
+								Next
+							</Text>
+						</Pressable>
+					</Link>
+					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
+				</View>
+			</ScrollView>
+		);
+	}
+}
+
+export default Welcome;
