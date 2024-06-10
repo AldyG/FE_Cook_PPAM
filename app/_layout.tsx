@@ -3,8 +3,10 @@ import Entypo from '@expo/vector-icons/Entypo';
 import * as Font from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { EdgeInsets, SafeAreaInsetsContext, SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { DMSans_400Regular, DMSans_700Bold } from '@expo-google-fonts/dm-sans';
+import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -63,13 +65,14 @@ export default function RootLayout() {
 function RootLayoutNav() {
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView style={{flex: 1}}>
+      <StatusBar animated={true} backgroundColor="#87e4fd"/>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="login" />
         <Stack.Screen name="register" />
         <Stack.Screen name="(tabs)" />
       </Stack>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
