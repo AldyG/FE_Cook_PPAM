@@ -326,7 +326,6 @@ const styles = StyleSheet.create({
 
 const Home: React.FC<prop> = () => {
 	const [search, onSearchFill] = React.useState("");
-
 	return (
 		<ScrollView contentContainerStyle={styles.homebg}>
 			<View style={styles.home1}>
