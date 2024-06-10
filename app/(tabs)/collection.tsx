@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   collection1: {
 		backgroundColor: "#edf9ff",
-		height: 932,
+		height: 1000,
 		position: "relative",
 		width: 430,
 	},

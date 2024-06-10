@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		fontFamily: "DMSans_700Bold",
 		fontSize: 20,
 		color: "#080738",
-		width: 100,
+		width: 120,
 		left: (460 / pixel_ratio),
 		top: 15
 	},
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
 		left: 36,
 		position: "absolute",
 		top: 380,
-		width: 232,
+		width: 300,
 	},
 	recipe1: {
 		height: 170,
