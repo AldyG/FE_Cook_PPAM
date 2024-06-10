@@ -232,8 +232,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 840,
     position: "absolute",
+    textAlign: "justify",
     height: 30,
-    width: 300,
+    width: 340,
   },
   inst2:{
     color: "#080738",
@@ -242,8 +243,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 870,
     position: "absolute",
+    textAlign: "justify",
     height: 150,
-    width: 320,
+    width: 340,
   },
   inst3:{
     color: "#080738",
@@ -252,8 +254,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 970,
     position: "absolute",
+    textAlign: "justify",
     height: 150,
-    width: 320,
+    width: 340,
   },
   inst4:{
     color: "#080738",
@@ -262,8 +265,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 1090,
     position: "absolute",
+    textAlign: "justify",
     height: 150,
-    width: 320,
+    width: 340,
   },
   inst5:{
     color: "#080738",
@@ -272,8 +276,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 1140,
     position: "absolute",
+    textAlign: "justify",
     height: 100,
-    width: 330,
+    width: 340,
   },
   inst6:{
     color: "#080738",
@@ -282,8 +287,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 1212,
     position: "absolute",
+    textAlign: "justify",
     height: 100,
-    width: 320,
+    width: 340,
   },
   inst7:{
     color: "#080738",
@@ -292,8 +298,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 1285,
     position: "absolute",
+    textAlign: "justify",
     height: 100,
-    width: 320,
+    width: 340,
   },
   inst8:{
     color: "#080738",
@@ -302,8 +309,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 1385,
     position: "absolute",
+    textAlign: "justify",
     height: 100,
-    width: 320,
+    width: 340,
   },
   backwhite: {
       height: 20,
@@ -342,7 +350,7 @@ const Rec: React.FC<prop> = () => {
         <View style={styles.line2}></View>
         <Text style={styles.instructions}>Instructions</Text>
         <Text style={styles.inst1}>1. Preheat the oven to 165 degrees C.</Text>
-        <Text style={styles.inst2}>2. Mix graham crumbs, melted butter, and 2 tablespoons sugar in a bowl until well combined. Pat mixture into the bottom of a 9-inch springform pan.</Text>
+        <Text style={styles.inst2}>2. Mix graham crumbs, melted butter, and two tablespoons of sugar in a bowl until well combined. Pat mixture into the bottom of a 9-inch springform pan.</Text>
         <Text style={styles.inst3}>3. Mash cream cheese in a mixing bowl until soft and creamy. Gradually beat in sour cream, 3/4 cup sugar, flour, and vanilla. Beat in eggs, one at a time. Pour mixture into the crumb-lined pan.</Text>
         <Text style={styles.inst4}>4. Bake in the preheated oven until firm to the touch, about 1 hour.</Text>
         <Text style={styles.inst5}>5. Place baked cheesecake in the refrigerator until thoroughly chilled, about 4 hours.</Text>
