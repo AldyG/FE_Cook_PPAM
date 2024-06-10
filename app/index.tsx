@@ -4,6 +4,7 @@ import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/d
 import { Link } from "expo-router";
 import { db } from '../FirebaseConfig'
 import { collection, getDocs } from "firebase/firestore";
+import Carousel from "@/components/carousel";
 
 interface prop {
   // prop halaman
@@ -189,11 +190,12 @@ const Welcome: React.FC<prop> = () => {
 	} else {
 		return (
 			<View style={styles.welcomePage}>
+				{/* <Carousel /> */}
 				<View style={styles.welcomePage1}>
 					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 					<View style={styles.overlap}>
 						<Image style={styles.group} source={require("../images/half_moon.png")} />
-						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
+						<Image style={styles.screenshot2} source={require("../images/chef_probably.png")} />
 						<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
 					</View>
 					<View style={styles.frame}>

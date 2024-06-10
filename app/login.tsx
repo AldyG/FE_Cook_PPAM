@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, Text, View, Pressable, ScrollView, Image, BackHandler } from "react-native";
+import { StyleSheet, TextInput, Text, View, Pressable, ScrollView, Image, BackHandler, Dimensions } from "react-native";
 import { useEffect, useState } from "react";
 import { Link, router } from "expo-router";
 import { auth } from '../FirebaseConfig';
@@ -23,8 +23,9 @@ export default function Login() {
 			backgroundColor: "#87e4fd",
 			display: "flex",
 			flexDirection: "row",
-			justifyContent: "center",
 			width: "100%",
+			height: Dimensions.get('window').height,
+			justifyContent: 'center'
 		},
 		welcomePage1: {
 			backgroundColor: "#87e4fd",
@@ -149,7 +150,7 @@ export default function Login() {
 	});
 
 	return (
-		<View style={styles.welcomePage}>
+		<ScrollView contentContainerStyle={styles.welcomePage} showsVerticalScrollIndicator={false}>
 			<View style={styles.welcomePage1}>
 				<Image style={styles.irreg_cloud} source={require("../images/irreg_cloud.png")} />
 				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
@@ -173,6 +174,6 @@ export default function Login() {
 					</Text>
 				</View>
 			</View>
-		</View>
+		</ScrollView>
 	);
 };

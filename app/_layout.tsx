@@ -6,7 +6,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { EdgeInsets, SafeAreaInsetsContext, SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { DMSans_400Regular, DMSans_700Bold } from '@expo-google-fonts/dm-sans';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -67,12 +68,16 @@ function RootLayoutNav() {
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar animated={true} backgroundColor="#87e4fd"/>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="login" />
-        <Stack.Screen name="register" />
-        <Stack.Screen name="(tabs)" />
-      </Stack>
+      <KeyboardAwareScrollView contentContainerStyle={{flex: 1, paddingBottom: -400}} enableOnAndroid>
+        <TouchableWithoutFeedback style={{flex: 1}} onPress={Keyboard.dismiss}>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            <Stack.Screen name="login" />
+            <Stack.Screen name="register" />
+            <Stack.Screen name="(tabs)" />
+          </Stack>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }
