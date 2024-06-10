@@ -25,11 +25,18 @@ const styles = StyleSheet.create({
 		position: "relative",
 		width: 430,
 	},
+	cookByTheBook: {
+		height: 184,
+		left: 109,
+		objectFit: "cover",
+		position: "absolute",
+		width: 213,
+	},
 	overlap: {
 		height: 331,
 		left: 0,
 		position: "absolute",
-		top: 225,
+		top: 150,
 		width: 430,
 	},
 	group: {
@@ -102,11 +109,11 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		display: "flex",
 		flexDirection: "column",
-		height: 134,
+		height: 180,
 		justifyContent: "center",
 		left: 66,
 		position: "absolute",
-		top: 640,
+		top: 510,
 		width: 329,
 	},
 	text: {
@@ -117,28 +124,13 @@ const styles = StyleSheet.create({
 		lineHeight: 36,
 		position: "relative",
 	},
-	textWrapper2: {
-		color: "#080738",
-		fontFamily: "DMSans_400Regular",
-		fontSize: 36,
-		lineHeight: 36,
-	},
-	cookByTheBook: {
-		height: 184,
-		left: 109,
-		objectFit: "cover",
-		position: "absolute",
-		top: 52,
-		width: 213,
-	},
 	buttonPosition: {
 		alignItems: "center",
 		backgroundColor: "white",
 		borderRadius: 20,
 		display: "flex",
-		// gap: 4,
 		padding: 8,
-		top: 840,
+		top: 720,
 		justifyContent: "center",
 		position: "absolute",
 		width: 200,
@@ -183,21 +175,22 @@ const Welcome: React.FC<prop> = () => {
 
 	if (!fontsLoaded) {
 		return (
-			<ScrollView contentContainerStyle={styles.welcomePage}>
+			<View style={styles.welcomePage}>
 				<View style={styles.welcomePage1}>
+					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 					<View style={styles.overlap}>
 						<Image style={styles.group} source={require("../images/half_moon.png")} />
 						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
 						<Image style={styles.elementsGeometric} source={require("../images/abstract_circle.png")} />
 					</View>
-					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 				</View>
-			</ScrollView>
+			</View>
 		)
 	} else {
 		return (
-			<ScrollView contentContainerStyle={styles.welcomePage}>
+			<View style={styles.welcomePage}>
 				<View style={styles.welcomePage1}>
+					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 					<View style={styles.overlap}>
 						<Image style={styles.group} source={require("../images/half_moon.png")} />
 						<Image style={styles.screenshot} source={require("../images/chef_probably.png")} />
@@ -211,17 +204,7 @@ const Welcome: React.FC<prop> = () => {
 					<View style={styles.flexContainer}>
 						<Text style={styles.text}>
 							<Text>
-								You can cook{"\n"}
-							</Text>
-						</Text>
-						<Text style={styles.text}>
-							<Text style={styles.textWrapper2}>
-								whatever dish{"\n"}
-							</Text>
-						</Text>
-						<Text style={styles.text}>
-							<Text style={styles.textWrapper2}>
-								you like
+								You can cook{"\n\n"}whatever dish{"\n\n"}you like
 							</Text>
 						</Text>
 					</View>
@@ -232,9 +215,8 @@ const Welcome: React.FC<prop> = () => {
 							</Text>
 						</Pressable>
 					</Link>
-					<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 				</View>
-			</ScrollView>
+			</View>
 		);
 	}
 }

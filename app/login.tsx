@@ -37,12 +37,11 @@ export default function Login() {
 			left: 109,
 			objectFit: "cover",
 			position: "absolute",
-			top: 52,
 			width: 213,
 		},
 		irreg_cloud: {
 			height: 450,
-			top: 107,
+			top: 55,
 			left: 0,
 			position: "absolute",
 			width: 430,
@@ -50,7 +49,7 @@ export default function Login() {
 		},
 		cook_lady: {
 			height: 228,
-			top: 190,
+			top: 138,
 			left: 103,
 			objectFit: "cover",
 			position: "absolute",
@@ -59,10 +58,10 @@ export default function Login() {
 		rectangle_bg: {
 			backgroundColor: "#EEFAFF",
 			borderRadius: 65,
-			height: 463,
+			height: 425,
 			left: 40,
 			position: "absolute",
-			top: 396,
+			top: 344,
 			width: 350,
 			borderColor: "black",
 			borderWidth: 1,
@@ -72,9 +71,9 @@ export default function Login() {
 			fontSize: 40,
 			color: "#080738",
 			textAlign: "center",
-			height: 50,
+			height: 45,
 			position: "absolute",
-			top: 28,
+			top: 15,
 			left: 75,
 			width: 200,
 		},
@@ -84,14 +83,14 @@ export default function Login() {
 			color: "#080738",
 			textAlign: "center",
 			position: "absolute",
-			top: 115,
+			top: 85,
 			left: 25,
 			width: 300,
 		},
 		email_box: {
 			width: 300,
 			height: 48,
-			top: 180,
+			top: 130,
 			left: 25,
 			borderColor: "#090838",
 			borderWidth: 1,
@@ -103,7 +102,7 @@ export default function Login() {
 		password_box: {
 			width: 300,
 			height: 48,
-			top: 216,
+			top: 156,
 			left: 25,
 			borderColor: "#090838",
 			borderWidth: 1,
@@ -113,7 +112,7 @@ export default function Login() {
 			borderRadius: 20,
 		},
 		login: {
-			bottom: 74,
+			top: 300,
 			alignItems: "center",
 			backgroundColor: "#090838",
 			borderRadius: 10,
@@ -140,7 +139,7 @@ export default function Login() {
 			color: "#080738",
 			textAlign: "center",
 			position: "absolute",
-			bottom: 30,
+			top: 375,
 			left: 50,
 			width: 250,
 		},
@@ -150,7 +149,7 @@ export default function Login() {
 	});
 
 	return (
-		<ScrollView contentContainerStyle={styles.welcomePage}>
+		<View style={styles.welcomePage}>
 			<View style={styles.welcomePage1}>
 				<Image style={styles.irreg_cloud} source={require("../images/irreg_cloud.png")} />
 				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
@@ -169,11 +168,11 @@ export default function Login() {
 					</Pressable>
 					<Text style={styles.dont_have_acc}>Don't have an account?{" "}
 						<Link style={styles.reg_now} href={"/register"} push asChild>
-							<Text style={styles.reg_now}>Register now!</Text>
+							<Text>Register now!</Text>
 						</Link>
 					</Text>
 				</View>
 			</View>
-		</ScrollView>
+		</View>
 	);
 };

@@ -26,7 +26,7 @@ export default function Register() {
 				tier: false
 			});
 			console.log("New user added with ID: ", ref.id);
-			router.push("/login");
+			router.push("/register");
 		}
       })
       .catch((err) => {
@@ -55,16 +55,15 @@ export default function Register() {
 			left: 109,
 			objectFit: "cover",
 			position: "absolute",
-			top: 52,
 			width: 213,
 		},
 		rectangle_bg: {
 			backgroundColor: "#EEFAFF",
 			borderRadius: 65,
-			height: 625,
+			height: 600,
 			left: 40,
 			position: "absolute",
-			top: 222,
+			top: 175,
 			width: 350,
 			borderColor: "black",
 			borderWidth: 1,
@@ -76,14 +75,14 @@ export default function Register() {
 			textAlign: "center",
 			height: 100,
 			position: "absolute",
-			top: 28,
+			top: 18,
 			left: 25,
 			width: 300,
 		},
 		first_name_box: {
 			width: 300,
 			height: 48,
-			top: 175,
+			top: 155,
 			left: 25,
 			borderColor: "#090838",
 			borderWidth: 1,
@@ -95,7 +94,7 @@ export default function Register() {
 		last_name_box: {
 			width: 300,
 			height: 48,
-			top: 210,
+			top: 190,
 			left: 25,
 			borderColor: "#090838",
 			borderWidth: 1,
@@ -107,7 +106,7 @@ export default function Register() {
 		email_box: {
 			width: 300,
 			height: 48,
-			top: 245,
+			top: 225,
 			left: 25,
 			borderColor: "#090838",
 			borderWidth: 1,
@@ -119,7 +118,7 @@ export default function Register() {
 		password_box: {
 			width: 300,
 			height: 48,
-			top: 280,
+			top: 260,
 			left: 25,
 			borderColor: "#090838",
 			borderWidth: 1,
@@ -128,8 +127,8 @@ export default function Register() {
 			paddingLeft: 20,
 			borderRadius: 20,
 		},
-		login: {
-			bottom: 74,
+		register: {
+			bottom: 65,
 			alignItems: "center",
 			backgroundColor: "#090838",
 			borderRadius: 24,
@@ -141,7 +140,7 @@ export default function Register() {
 			position: "absolute",
 			width: 256,
 		},
-		login_text: {
+		register_text: {
 			fontFamily: "DMSans_700Bold",
 			fontSize: 14,
 			color: "#FFFFFF",
@@ -156,17 +155,17 @@ export default function Register() {
 			color: "#080738",
 			textAlign: "center",
 			position: "absolute",
-			bottom: 30,
+			bottom: 26,
 			left: 50,
 			width: 250,
 		},
-		log_now: {
+		signin_now: {
 			textDecorationLine: "underline",
 		},
 	});
 
 	return (
-		<ScrollView contentContainerStyle={styles.welcomePage}>
+		<View style={styles.welcomePage}>
 			<View style={styles.welcomePage1}>
 				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 				<View style={styles.rectangle_bg}>
@@ -179,18 +178,18 @@ export default function Register() {
 					value={email} placeholder="Enter your registered email"/>
 					<TextInput style={styles.password_box} onChangeText={(password) => setPassword(password)}
 					value={password} secureTextEntry={true} placeholder="Enter your password"/>
-					<Pressable style={styles.login} onPress={handleRegister}>
-						<Text style={styles.login_text}>
+					<Pressable style={styles.register} onPress={handleRegister}>
+						<Text style={styles.register_text}>
 							REGISTER
 						</Text>
 					</Pressable>
 					<Text style={styles.have_acc}>Already have an account?{" "}
-						<Link style={styles.log_now} href={"/login"} push asChild>
-							<Text style={styles.log_now}>Sign in now!</Text>
+						<Link style={styles.signin_now} href={"/login"} push asChild>
+							<Text style={styles.signin_now}>Sign in now!</Text>
 						</Link>
 					</Text>
 				</View>
 			</View>
-		</ScrollView>
+		</View>
 	);
 };

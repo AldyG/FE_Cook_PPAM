@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 		height: 331,
 		left: 0,
 		position: "absolute",
-		top: 225,
+		top: 100,
 		width: 430,
 	},
 	group: {
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
 	screenshot3: {
 		height: 299,
 		left: "25%",
-		// objectFit: "cover",
 		position: "absolute",
 		top: "13%",
 		width: 188,
@@ -101,11 +100,11 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		display: "flex",
 		flexDirection: "column",
-		height: 134,
+		height: 180,
 		justifyContent: "center",
 		left: 66,
 		position: "absolute",
-		top: 640,
+		top: 475,
 		width: 329,
 	},
 	text: {
@@ -116,18 +115,11 @@ const styles = StyleSheet.create({
 		lineHeight: 36,
 		position: "relative",
 	},
-	textWrapper2: {
-		color: "#080738",
-		fontFamily: "DMSans_400Regular",
-		fontSize: 36,
-		lineHeight: 36,
-	},
 	cookByTheBook: {
 		height: 184,
 		left: 109,
 		objectFit: "cover",
 		position: "absolute",
-		top: 52,
 		width: 213,
 	},
 	buttonPosition: {
@@ -135,9 +127,8 @@ const styles = StyleSheet.create({
 		backgroundColor: "white",
 		borderRadius: 20,
 		display: "flex",
-		// gap: 4,
 		padding: 8,
-		top: 840,
+		top: 720,
 		justifyContent: "center",
 		position: "absolute",
 		width: 200,
@@ -160,8 +151,9 @@ const Welcome2: React.FC<prop> = () => {
 	});
 
 	return (
-		<ScrollView contentContainerStyle={styles.welcomePage}>
+		<View style={styles.welcomePage}>
 			<View style={styles.welcomePage1}>
+				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 				<View style={styles.overlap}>
 					<Image style={styles.group} source={require("../images/cloud.png")} />
 					<Image style={styles.screenshot2} source={require("../images/chef_probably_2.png")} />
@@ -175,17 +167,7 @@ const Welcome2: React.FC<prop> = () => {
 				<View style={styles.flexContainer}>
 					<Text style={styles.text}>
 						<Text>
-							You can collect{"\n"}
-						</Text>
-					</Text>
-					<Text style={styles.text}>
-						<Text style={styles.textWrapper2}>
-							your favorite{"\n"}
-						</Text>
-					</Text>
-					<Text style={styles.text}>
-						<Text style={styles.textWrapper2}>
-							recipes
+							You can collect{"\n\n"}your favorite{"\n\n"}recipes
 						</Text>
 					</Text>
 				</View>
@@ -196,9 +178,8 @@ const Welcome2: React.FC<prop> = () => {
                         </Text>
                     </Pressable>
 				</Link>
-				<Image style={styles.cookByTheBook} source={require("../images/cbtb_nobg.png")} />
 			</View>
-		</ScrollView>
+		</View>
 	);
 }
 
