@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: "#080738",
 		width: 120,
-		left: (460 / pixel_ratio),
+		left: (305 / pixel_ratio),
 		top: 15
 	},
 	identity_box: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: "#080738",
 		width: 230,
-		left: (460 / pixel_ratio),
+		left: (320 / pixel_ratio),
 		top: 0
 	},
 	profile_name: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: "#080738",
 		width: 247,
-		left: (460 / pixel_ratio),
+		left: (320 / pixel_ratio),
 		top: 5
 	
 	},
@@ -259,14 +259,14 @@ const Profile: React.FC<prop> = () => {
 					<Image style={styles.user_logo} source={require("../../images/user_circle.png")}/>
 					<Text style={styles.profile_username}>UserWOW!BRAVO!</Text>
 					<Text style={styles.profile_name}>Mellstroy_Impostor</Text>
-					<Link style={styles.edit} href={"/(tabs)/profiling/change-profile"} asChild>
+					<Link style={styles.edit} href={"/(tabs)/(profiling)/change-profile"} asChild>
 						<Pressable>
 							<Text style={styles.edit_text}>
 								Edit Profile
 							</Text>
 						</Pressable>
 					</Link>
-					<Link style={styles.upgrade} href={"/(tabs)/profiling/upgrade"} asChild>
+					<Link style={styles.upgrade} href={"/(tabs)/(profiling)/upgrade"} asChild>
 						<Pressable>
 							<Text style={styles.upgrade_text}>
 								Upgrade Now!
@@ -275,7 +275,7 @@ const Profile: React.FC<prop> = () => {
 					</Link>
 				</View>
 				<Text style={styles.biography}>Biography</Text>
-				<Text style={styles.bio_text}>AM AM AM {"\n"}AM AM AM AM AM AM AM AM AM</Text>
+				<Text style={styles.bio_text}>AM AM AM</Text>
 				<Text style={styles.rec_view_rec}>Recently Viewed Recipes</Text>
 				<View style={styles.recipe1}>
 					<Text style={styles.name_recipe}>Strawberry Cheesecake</Text>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
 import { Redirect } from 'expo-router';
 
@@ -173,9 +173,11 @@ const Own: React.FC<prop> = () => {
       <View style={styles.yourrecipe1}>
         <View style={styles.boxrectangle}>
           <Text style={styles.post_recipe}>Post your Recipes</Text>
-          <Image style= {styles.backarrow} source={require("../../images/backarrow2.png")}/>
+          <Pressable onPress={() => router.back()}>
+            <Image style= {styles.backarrow} source={require("../../images/backarrow2.png")}/>
+          </Pressable>
         </View>
-        <Link style={styles.add_recipe_box} href={"/(tabs)/recipes/add-recipes"} asChild push>
+        <Link style={styles.add_recipe_box} href={"/(tabs)/(recipes)/add-recipes"} asChild push>
           <Pressable>
               <Text style={styles.recipe_box_label}>Add new recipe</Text>
               <Image style= {styles.add_button} source={require("../../images/add_plus_circle.png")}/>

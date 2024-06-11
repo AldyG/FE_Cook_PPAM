@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
-import { Link } from 'expo-router'
+import { Link, router, useGlobalSearchParams, useLocalSearchParams } from 'expo-router'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
 import { Redirect } from 'expo-router';
 
@@ -284,6 +284,33 @@ const styles = StyleSheet.create({
 		top: 9,
 		width: 20,
 	},
+  goicon: {
+		height: 20,
+		left: 209,
+		position: "absolute",
+		top: 9,
+		width: 30,
+    backgroundColor: "#87e4fd",
+    borderWidth: 0.5,
+    borderColor: "#1a1a1a",
+    borderRadius: 17,
+    right: 25,
+    alignItems: "center"
+	},
+  hideicon: {
+		height: 20,
+		left: 209,
+		position: "absolute",
+		top: 9,
+		width: 30,
+    borderWidth: 0.5,
+    borderColor: "transparent",
+    backgroundColor: "transparent",
+    borderRadius: 17,
+    right: 25,
+    alignItems: "center",
+    flex: 1
+	},
 	homeicon: {
 		height: 25,
 		left: 55,
@@ -325,7 +352,14 @@ const styles = StyleSheet.create({
 });
 
 const Home: React.FC<prop> = () => {
-	const [search, onSearchFill] = React.useState("");
+	const [search, setSearch] = React.useState("");
+  const params = useGlobalSearchParams<{ q?: string }>();
+  let go;
+  if(search.trimStart() != ""){
+    go = <Pressable style={styles.goicon} onPress={() => {setSearch(""); router.push(`/(recipes)/${params.q}`)}}>
+          <Text>Go</Text>
+         </Pressable>
+  }
 	return (
 		<ScrollView contentContainerStyle={styles.homebg}>
 			<View style={styles.home1}>
@@ -333,7 +367,8 @@ const Home: React.FC<prop> = () => {
         <Image style={styles.cbtb_logo} source={require("../../images/cbtb_nobg.png")} alt="cbtb"/>
           <View style={styles.searchbox}>
             <Image style={styles.searchicon} source={require("../../images/searchicon.png")} alt="icon"/>
-            <TextInput style={styles.searchrecipe} placeholder="Search recipes" onChangeText={onSearchFill} value={search}/>
+            <TextInput id="browser" style={styles.searchrecipe} placeholder="Search recipes" onChangeText={(search) => {setSearch(search); router.setParams({ q: search });}} value={search}/>
+            {go}
           </View>
         </View>
         <Text style={styles.trendingrecipes}>Trending Recipes</Text>
@@ -361,17 +396,7 @@ const Home: React.FC<prop> = () => {
             <Text style={styles.rendangtext}>Rendang</Text>
             <Text style={styles.byirma}>By Irma</Text>
             <Text style={styles.watchads}>Watch Ad!</Text>
-        <View style={styles.navbarbox}></View>
-          <View style={styles.homebox}></View>
-				    <Image style= {styles.homeicon} source={require("../../images/home_1.png")} alt="home"/>
-				  <Image style= {styles.postrecipeicon} source={require("../../images/book_open.png")} alt="post"/>
-				  <Image style= {styles.collectionicon} source={require("../../images/heart_1.png")} alt="saved"/>
-          <Link href={"/(tabs)/profile"} style= {styles.profileicon} asChild>
-            <Pressable>
-              <Image source={require("../../images/user_1.png")} alt="prof"/>
-            </Pressable>
-          </Link>
-			</View>
+      </View>
 		</ScrollView>
 	);
 };

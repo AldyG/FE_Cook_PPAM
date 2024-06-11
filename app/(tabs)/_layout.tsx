@@ -72,6 +72,12 @@ import { auth } from "../../FirebaseConfig";
             )
           }
         }} />
+        <Tabs.Screen name="(recipes)" options={{
+          href: null,
+        }} />
+        <Tabs.Screen name="(profiling)" options={{
+          href: null,
+        }} />
       </Tabs>
     );
   }
