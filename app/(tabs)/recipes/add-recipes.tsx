@@ -18,7 +18,7 @@ export default function Add() {
     },
     addrecipe1: {
       backgroundColor: "#edf9ff",
-      height: 1800,
+      height: 1600,
       position: "relative",
       width: 430,
     },
@@ -158,7 +158,44 @@ export default function Add() {
       lineHeight: 24,
       position: "absolute",
       width: 192
-    }
+    },
+    instructions: {
+      color: "#080738",
+      fontFamily: "DMSans_400Regular",
+      fontSize: 18,
+      left: 45,
+      top: 810,
+      lineHeight: 24,
+      width: 211
+    },
+    add_instructions_box: {
+      backgroundColor: "#ffffff",
+      borderColor: "#87e4fd",
+      borderWidth: 0.5,
+      borderRadius: 17,
+      height: 500,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 10,
+      paddingBottom: 10,
+      textAlignVertical: "top",
+      overflow: "hidden",
+      fontFamily: "DMSans_400Regular",
+      left: 45,
+      position: "absolute",
+      top: 935,
+      width: 340,
+    },
+    add_instructions_text: {
+      color: "#909090",
+      fontFamily: "DMSans_400Regular",
+      fontSize: 14,
+      left: 5,
+      top: 0,
+      lineHeight: 24,
+      position: "absolute",
+      width: 192
+    },
   });
   return (
     <ScrollView contentContainerStyle={styles.addrecipebg}>
@@ -190,6 +227,15 @@ export default function Add() {
               <Text style={styles.add_ingredient_text}> + Add ingredient</Text>
             </View>
           </View>
+          <Text style={styles.instructions}>Instructions</Text>
+          <TextInput
+            style={styles.add_instructions_box}
+            onChangeText={(recipeDescription) => setRecipeDescription(recipeDescription)}
+            value={recipeDescription}
+            placeholder="Enter the instructions"
+            multiline={true}
+            numberOfLines={10}
+            />
         </View>
     </ScrollView>
     );
