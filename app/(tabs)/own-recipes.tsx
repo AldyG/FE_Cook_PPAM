@@ -175,10 +175,12 @@ const Own: React.FC<prop> = () => {
           <Text style={styles.post_recipe}>Post your Recipes</Text>
           <Image style= {styles.backarrow} source={require("../../images/backarrow2.png")}/>
         </View>
-        <View style={styles.add_recipe_box}>
-          <Text style={styles.recipe_box_label}>Add new recipe</Text>
-          <Image style= {styles.add_button} source={require("../../images/add_plus_circle.png")}/>
-        </View>
+        <Link style={styles.add_recipe_box} href={"/(tabs)/recipes/add-recipes"} asChild push>
+          <Pressable>
+              <Text style={styles.recipe_box_label}>Add new recipe</Text>
+              <Image style= {styles.add_button} source={require("../../images/add_plus_circle.png")}/>
+          </Pressable>
+        </Link>
         <Text style={styles.your_recipes}>Your Recipes (3)</Text>
         <View style={styles.sushibox}>
           <Image style={styles.boxpic} source={require("../../images/sushi.png")} alt="sushi"/>

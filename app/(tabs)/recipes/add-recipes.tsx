@@ -163,10 +163,12 @@ export default function Add() {
   return (
     <ScrollView contentContainerStyle={styles.addrecipebg}>
         <View style={styles.addrecipe1}>
-          <View style={styles.boxrectangle}>
-            <Text style={styles.add_recipe}>Add Recipe</Text>
-            <Image style= {styles.backarrow} source={require("../../../images/backarrow2.png")}/>
-          </View>
+          <Link style={styles.boxrectangle} href={"/(tabs)/own-recipes"} asChild push>
+              <Pressable>
+                <Text style={styles.add_recipe}>Add Recipe</Text>
+                <Image style= {styles.backarrow} source={require("../../../images/backarrow2.png")}/>
+              </Pressable>
+          </Link>
           <View style={styles.add_recipe_box}>
             <Image style= {styles.add_button} source={require("../../../images/add_plus_circle.png")}/>
           </View>
