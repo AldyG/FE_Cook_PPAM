@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput, PixelRatio } from "react-native";
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useEffect, useState } from "react";
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
 import { Redirect } from 'expo-router';
@@ -30,7 +30,7 @@ export default function Change() {
       fontSize: 20,
       color: "#080738",
       width: 200,
-      left: (200 / pixel_ratio),
+      left: (270 / pixel_ratio),
       top: 10
     },
     user_logo: {
@@ -45,7 +45,7 @@ export default function Change() {
       fontSize: 20,
       color: "#080738",
       width: 230,
-      left: (460 / pixel_ratio),
+      left: (320 / pixel_ratio),
       top: 0
     },
     profile_name: {
@@ -53,7 +53,7 @@ export default function Change() {
       fontSize: 16,
       color: "#080738",
       width: 247,
-      left: (460 / pixel_ratio),
+      left: (320 / pixel_ratio),
       top: 5
     },
     box: {
@@ -215,9 +215,11 @@ export default function Change() {
 					<Image style={styles.user_logo} source={require("../../../images/user_circle.png")}/>
 					<Text style={styles.profile_username}>UserWOW!BRAVO!</Text>
 					<Text style={styles.profile_name}>Mellstroy_Impostor</Text>
-          <View style={styles.save}>
-            <Text style={styles.save_text}>Save Profile</Text>
-          </View>
+          <Pressable onPress={() => router.push("../profile")}>
+            <View style={styles.save}>
+              <Text style={styles.save_text}>Save Profile</Text>
+            </View>
+          </Pressable>
 				</View>
         <Text style={styles.firstname}>First Name</Text>
         <Image style={styles.pencil1} source={require("../../../images/pencilicon.png")}/>

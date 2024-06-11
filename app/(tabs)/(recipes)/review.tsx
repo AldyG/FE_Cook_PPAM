@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
 import { Redirect } from 'expo-router';
 
@@ -207,7 +207,9 @@ const Rev: React.FC<prop> = () => {
       <View style={styles.review1}>
         <View style={styles.boxrectangle}>
           <Text style={styles.blueberrycheesecake}>Blueberry Cheesecake</Text>
-          <Image style= {styles.backarrow} source={require("../../../images/backarrow2.png")}/>
+          <Pressable onPress={() => router.back()}>
+            <Image style= {styles.backarrow} source={require("../../../images/backarrow2.png")}/>
+          </Pressable>
         </View>
         <Text style={styles.ratingscomments}>Ratings & Comments</Text>
         <View style={styles.commentbox1}>
@@ -243,9 +245,9 @@ const Rev: React.FC<prop> = () => {
           </View>
         </View>
         <Text style={styles.leavearating}>Leave a Rating:</Text>
-        <View style={styles.outerratingbox}></View>
+        <TextInput style={styles.outerratingbox} placeholder='    0'></TextInput>
         <View style={styles.inputbox}>
-          <Text style={styles.commentinput}>Leave a comment...</Text>
+          <TextInput style={styles.commentinput} placeholder='Leave a comment...' ></TextInput>
         </View>
       </View>
     </ScrollView>

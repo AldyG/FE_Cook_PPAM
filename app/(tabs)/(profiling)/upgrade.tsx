@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
 import { Redirect } from 'expo-router';
 
@@ -174,12 +174,10 @@ const Upgrade: React.FC<prop> = () => {
   return (
     <ScrollView contentContainerStyle={styles.upgradebg}>
       <View style={styles.upgrade1}>
-        <Link style={styles.boxrectangle} href={"/(tabs)/profile"} asChild push>
-          <Pressable>
+          <Pressable style={styles.boxrectangle} onPress={() => router.push("../profile")}>
             <Text style={styles.upgrade_header}>Upgrade your Account</Text>
             <Image style= {styles.backarrow} source={require("../../../images/backarrow2.png")}/>
           </Pressable>
-        </Link>
         <Image style= {styles.backgroundStar} source={require("../../../images/star.png")}/>
         <Text style={styles.bigtitle}>Save and Collect Unlimited Recipes!</Text>
         <View style={styles.benefitbox}>

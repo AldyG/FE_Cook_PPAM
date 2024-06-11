@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Pressable, Dimensions, TextInput } from "react-native";
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { DMSans_700Bold, DMSans_400Regular, useFonts} from "@expo-google-fonts/dm-sans";
 import { Redirect } from 'expo-router';
 
@@ -327,13 +327,15 @@ const Rec: React.FC<prop> = () => {
     <ScrollView contentContainerStyle={styles.recipebg}>
       <View style={styles.recipe1}>
         <Image style={styles.cheesecakepic} source={require("../../../images/bcheesecake.png")} alt="bck"/>
-        <Image style= {styles.backwhite} source={require("../../../images/backwhite.png")} alt="wht"/>
+        <Pressable onPress={() => router.back()}>
+          <Image style= {styles.backwhite} source={require("../../../images/backwhite.png")} alt="wht"/>
+        </Pressable>
         <Text style={styles.blueberrycheesecake}>Blueberry Cheesecake</Text>
         <Image style={styles.profileicon} source={require("../../../images/user_circle.png")} alt="proficon"/>
         <Text style={styles.rordongamsay}>Rordon Gamsay</Text>
-        <View style={styles.ratebox}>
+        <Pressable style={styles.ratebox} onPress={() => router.push("./review")}>
           <Text style={styles.rating}>4.5</Text>
-        </View>
+        </Pressable>
         <View style={styles.line1}></View>
         <Text style={styles.ingredients}>Ingredients</Text>
         <Text style={styles.ing1}>1 cup graham cracker crumbs</Text>
