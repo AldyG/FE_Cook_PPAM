@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     height: 140,
     left: 44,
-    top: 240,
+    top: 160,
     width: 345
   },
   benefits: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     fontFamily: "DMSans_700Bold",
     fontSize: 18,
     left: 6,
-    top: 2,
+    top: 1,
     lineHeight: 24,
     position: "absolute",
     textAlign: "justify",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     fontFamily: "DMSans_700Bold",
     fontSize: 18,
     left: 50,
-    top: 400,
+    top: 440,
     width: 192,
     lineHeight: 24,
     position: "absolute",
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     height: 50,
     left: 44,
-    top: 315,
+    top: 230,
     width: 345
   },
   dots: {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#090838",
     borderRadius: 10,
     left: 111,
-    top: 380,
+    top: 280,
   },
   subscribetext: {
     fontFamily: "DMSans_700Bold",
@@ -155,6 +155,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     left: 50,
     top: 12,
+  },
+  bigtitle: {
+    color: "#080738",
+    fontFamily: "DMSans_700Bold",
+    fontSize: 30,
+    lineHeight: 34,
+    textAlign: "center",
+    height: 120,
+    width: 300,
+    left: 67,
+    top: 185,
+    objectFit: "cover",
   }
 });
 
@@ -169,6 +181,7 @@ const Upgrade: React.FC<prop> = () => {
           </Pressable>
         </Link>
         <Image style= {styles.backgroundStar} source={require("../../../images/star.png")}/>
+        <Text style={styles.bigtitle}>Save and Collect Unlimited Recipes!</Text>
         <View style={styles.benefitbox}>
           <Text style={styles.benefits}>Benefits</Text>
           <Image style= {styles.dots} source={require("../../../images/dots.png")}/>
